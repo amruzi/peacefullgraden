@@ -1,11 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Lobster&family=Varela+Round&display=swap);
 @font-face {
   font-family: "GoodUnicorn";
-  src: url(/font/GoodUnicornRegular-Rxev.ttf) format("truetype");
+  src: url("../fonts/GoodUnicornRegular-Rxev.ttf") format("truetype");
 }
 @font-face {
   font-family: "Playkidz";
-  src: url(/font/Playkidz-YzXq2.otf) format("opentype");
+  src: url("../fonts/Playkidz-YzXq2.otf") format("opentype");
 }
 
 :root {
@@ -14,6 +14,7 @@
   --biru-pudar: #bcd7ea;
   --biru-muda: #84bfeb;
   --biru-air: #3b8fc8;
+  --toska: #55c1c4;
   --kuning-muda: #feda62;
   --coklat-muda: #b38962;
   --hijau-muda: #72b362;
@@ -47,10 +48,12 @@ body {
   text-shadow: 0px 1px 5px #000;
 }
 .content {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 6rem;
 }
 .title-section {
+  position: relative;
+  z-index: 1;
   text-align: center;
   padding-top: 1rem !important;
   font-family: "Playkidz";
@@ -58,15 +61,45 @@ body {
   text-align: center;
   font-weight: 600;
 }
+.title-section svg {
+  width: 60vw;
+}
+@media (min-width: 992px) {
+  .title-section svg {
+    width: 38vw;
+  }
+}
+.breadcrumb-item {
+  font-size: 18px;
+  font-weight: 600;
+}
+.breadcrumb-item a {
+  color: #fff !important;
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  color: #ddd !important;
+  text-decoration: underline;
+}
+.breadcrumb-item::before {
+  color: var(--biru-pudar) !important;
+  font-weight: 600;
+}
+.breadcrumb-item.active {
+  color: var(--biru-pudar) !important;
+}
 
 /* navbar */
-#navbar {
+#header {
   position: fixed;
   width: 100%;
   z-index: 10;
 }
 .bg-merah {
   background-color: var(--merah-muda);
+}
+.bg-toska {
+  background-color: var(--toska);
 }
 .navbar-collapse {
   margin-top: 10px;
@@ -136,43 +169,67 @@ body {
   /* background: linear-gradient(to bottom, var(--biru-pudar) 30%, #fff 100%); */
   background-color: var(--biru-pudar);
 }
+#title-utama {
+  font-family: "Playkidz";
+  color: #555;
+  padding-top: 5rem;
+}
 
-/* SecondMenu */
-#second {
+/* FirstMenu */
+#first {
   background-color: var(--hijau-muda);
+  color: #fff;
 }
 #domba1 {
   position: absolute;
-  top: 160%;
-  left: 30%;
+  top: 125%;
+  left: 22%;
 }
 #domba2 {
   position: absolute;
-  top: 170%;
-  left: 25%;
+  top: 127%;
+  left: 10%;
 }
 
 #domba3 {
   position: absolute;
-  top: 153%;
-  left: 25%;
+  top: 118%;
+  left: 14%;
 }
 
-/* ThirdMenu */
-#third {
+#domba4 {
+  position: absolute;
+  top: 125%;
+  right: 20%;
+  transform: scaleX(-1);
+}
+
+#domba5 {
+  position: absolute;
+  top: 118%;
+  right: 16%;
+  transform: scaleX(-1);
+}
+
+/* SecondMenu */
+#second {
   background-color: var(--biru-air);
+  color: #fff;
 }
 #tepi {
   position: absolute;
   width: 100%;
   height: 6rem;
   background-color: var(--hijau-muda);
+  display: flex;
+  justify-content: center;
 }
 #tepi-tanah {
   width: 100%;
   height: 100%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+  border-radius: 70% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   background-color: var(--coklat-muda);
 }
 #tepi-air {
@@ -180,7 +237,66 @@ body {
   bottom: 0;
   width: 100%;
   height: 70%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   background-color: var(--biru-air);
+}
+
+/* ThirdMenu */
+#third {
+  /* background-color: var(--hijau-muda); */
+  background-color: var(--coklat-muda);
+  color: #fff;
+}
+#tepiBawah {
+  position: absolute;
+  bottom: 600;
+  width: 100%;
+  height: 6rem;
+  background-color: var(--hijau-muda);
+  display: flex;
+  justify-content: center;
+}
+#tepi-tanah2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 70% / 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--coklat-muda);
+}
+#tepi-air2 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 70%;
+  border-radius: 50% / 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--biru-air);
+}
+
+/* Beranda2 */
+#danauAtas {
+  position: absolute;
+  width: 100%;
+  padding-top: 20vh;
+  background-color: var(--biru-pudar);
+}
+#dombaDanau1 {
+  position: absolute;
+  top: 82%;
+  left: 22%;
+}
+#isi {
+  background-color: var(--hijau-muda);
+  color: #fff;
+}
+#panel-isi {
+  background-color: var(--coklat-muda);
+  min-height: 100vh;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  margin-top: 1rem;
 }
